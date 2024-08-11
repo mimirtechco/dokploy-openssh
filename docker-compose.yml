@@ -1,0 +1,23 @@
+version: '3'
+services:
+  ssh:
+    image: lscr.io/linuxserver/openssh-server:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - USER_NAME=admin
+      - USER_PASSWORD=TGlyfUTCwJRK382l
+      - SUDO_ACCESS=true
+    expose:
+     - 2222
+    volumes:
+      - config:/config
+    restart: unless-stopped
+
+volumes:
+  config: {}
+
+networks:
+  dokploy-network:
+    external: true
